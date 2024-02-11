@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Landing - Forty by HTML5 UP</title>
+		<title>Excel Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -73,16 +73,78 @@
 									<header class="major">
 										<h2>Cyclistic Case Study</h2>
 									</header>
-									<p>A simple interactive dashboard summarises the survey conducted on hundreds of data professionals, allowing users to find the overall satisfaction and the difficulty of breaking into data based on various circumstances such as location, gender, age, occupation and industry etc.</p>
-									<iframe src="https://onedrive.live.com/embed?resid=84A3F7CF774912F%213980&authkey=!AIOBq-lh9L5T8gk&em=2" width="1280" height="768" frameborder="0" scrolling="no"></iframe>
-									<br></br>
+									<p>Cyclistic, a Fictional bike share company, believes that the company's future success depends on maximising the number of annual members.The purpose of this project is to find out how annual members and casual riders use Cyclistic bikes differently and understand why casual riders would choose to purchase Cyclistic annual memberships.</p>
+									<!--
+									<iframe src="https://onedrive.live.com/embed?resid=84A3F7CF774912F%213980&authkey=!AIOBq-lh9L5T8gk&em=2" width="1280" height="768" frameborder="0" scrolling="no" style="max-width: 120vh;"></iframe>
+									-->
+									<!--
+									<script>
+										window.onload = function() {
+											refreshExcel();
+										};
+									
+										function refreshExcel() {
+											var iframe = document.getElementById("excel-iframe");
+											iframe.src = "https://onedrive.live.com/embed?resid=84A3F7CF774912F%213999&authkey=!AFRpII1WvYofJ2E&em=2" + Date.now();
+										}
+									</script>
+									-->
+									
 			
 									<h3>Dataset</h3>
-									<p>The survey was conducted by YouTuber "Alex The Analyst" through different social media platforms. This dataset was acquired from his <a href="https://github.com/AlexTheAnalyst/Power-BI/blob/main/Power%20BI%20-%20Final%20Project.xlsx">GitHub repository</a>.</p>
+									<p>This dataset was acquired from the following <a href="https://divvy-tripdata.s3.amazonaws.com/index.html" target=”_blank>webpage</a>. The data has been made available by
+										Motivate International Inc. under this <a href="https://divvybikes.com/data-license-agreement" target=”_blank>license</a>.</p>
+
 									<h3>Data Cleaning And Transformation</h3>
-									<p>The data was cleaned using Power Query, which involved removing unnecessary columns, transforming salary brackets into numeric values to improve usability and summarising data in the other option etc.</p>
-									<p>In order to visualise the satisfaction scores for all categories in one column chart, the satisfaction data was unpivoted and stored in a separate table. A new relationship between these two tables was created to allow other visuals to interact with the satisfaction graph.</p>
-									<p>Additionally, a column with numeric values was created to represent the difficulty column. The purpose of this new column is to allow the legend in the pie chart to be sorted in the desired order.</p>
+
+									<figure class="image fig">
+										<img src="images/Original_Data_Example.jpg" alt="" />
+										<figcaption>Fig.1 - Original data example</figcaption>
+									</figure>
+									<br></br>
+									<p>The data was cleaned in Excel, which involved the following steps:</p>
+									<li>Checked and removed duplicates</li>
+									<li>Checked and fixed data type for each columns</li>
+									<li>Renamed some headers and data to improve readability</li>
+									<li>Removed unnecessary columns that will not be used in this analysis</li>
+									<li>Created a new column "ride_duration" by subtracting the started_at by ended_at and converting it to time format.</li>
+									<li>Validated the data in this new column and removed rows that show invalid values. &#40;E.g. some data in the started_at column are greater than the data in the ended_at column, which appears to be an error in this dataset&#41;</li>							
+									<figure class="image fig">
+										<img src="images/Time_Error_Example.JPG" alt="" />
+										<figcaption>Fig.2 - Ride duration error example</figcaption>
+									</figure>
+									<li>Removed rows contain invalid data, such as inconsistent ride id length and format, blank cells, rides start or end from HQ QR station with less than few seconds short duration</li>
+									<li>Created a new column "day_of_week" based on the started_at date, then validated the data in a new column by comparing it to the calendar</li>
+									<li>Created a new column "day_of_week_text" for readability</li>
+									<li>Created a new column "month" for the slicer</li>
+						
+									<figure class="image fig">
+										<img src="images/Cleaned_Data_Example.JPG" alt="" />
+										<figcaption>Fig.3 - Cleaned and transformed data example</figcaption>
+									</figure>
+									<br></br>
+									<h3>Dashboard and conclusion</h3>
+									<p>The dashboard below was created in Excel and interactable. However, due to the size of this dataset, the dashboard was saved without the underlying data. Therefore, please click the "Refresh all data connections" button at the bottom right of the dashboard if you wish to interact with the slicers.</p>
+									<div class="iframe-container">
+										<iframe src="https://onedrive.live.com/embed?resid=84A3F7CF774912F%213999&authkey=!AFRpII1WvYofJ2E&em=2" frameborder="0" scrolling="no"></iframe>
+									</div>
+									<br></br>
+									<h4>Analysis Results</h4>
+									<p>The analysis revealed that the majority of rides are taken by annual members, with only a small proportion coming from casual riders.</p>
+									<p>Moreover, the data indicates that casual riders tend to use the service more frequently during weekends, while annual members show higher usage rates on weekdays. </p>
+									<p>Additionally, the average ride duration is longer for casual riders compared to annual members. </p>
+
+									<h4>Conclusion</h4>
+									<p>While there is insufficient evidence to fully support this conclusion due to missing important information such as pricing plans, based on the analysis results and price plans from other bike share services (e.g., OVO Bikes), we can assume that:</p>
+
+									<p>Annual members tend to utilise the service more frequently and ride shorter distances as they can use the service for free within the first 30 minutes. On the other hand, casual riders use the bike share service selectively, typically not for commuting, as indicated by their higher usage during weekends. They also tend to use this service when they need it for a long duration as they are charged for every specific period.</p>
+
+									<p>The higher frequency of service use during weekdays by annual members suggests that many may be using the service for their daily commute. Therefore, promoting cycling to work could potentially encourage more riders to purchase annual memberships.</p>
+
+									<p>Additionally, annual members also tend to use the service to cover short distances, which indicates that riders are more likely to cycle to work when it takes around 11 minutes on average to reach their destination. Therefore, setting up more stations near offices or popular areas could potentially increase the purchase of annual memberships.</p>
+
+									<p>It is recommended to survey the annual members through the bike share app to gather more information, such as their purpose for using this service to confirm this hypothesis. Additionally, inquire about where they heard about us to identify the most optimal way to promote cycling to work once the hypothesis is confirmed.</p>
+
 								</div>
 							</section>
 
@@ -185,14 +247,14 @@
 								<div class="contact-method">
 									<span class="icon solid alt fa-envelope"></span>
 									<h3>Email</h3>
-									<a href="#">information@untitled.tld</a>
+									<a href="#">kieran_song@hotmail.com</a>
 								</div>
 							</section>
 							<section>
 								<div class="contact-method">
 									<span class="icon solid alt fa-phone"></span>
 									<h3>Phone</h3>
-									<span>(000) 000-0000 x12387</span>
+									<span>(+44)7455733376</span>
 								</div>
 							</section>
 							<!--
@@ -219,8 +281,8 @@
 								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
 								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
 								-->
-								<li><a href="https://github.com/s262680" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="https://www.linkedin.com/in/kieran-chi-io-song-8516aa174/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://github.com/s262680" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/kieran-chi-io-song-8516aa174/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 							<!--
 							<ul class="copyright">
 								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
